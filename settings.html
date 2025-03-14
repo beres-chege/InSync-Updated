@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Settings - InSync</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header>
+  <nav class="main-nav">
+    <div class="logo">
+      <a href="index.html">InSync</a>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for artists, albums, or tracks">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+    <div class="nav-links">
+      <a href="discover.html">Discover</a>
+      
+      <!-- User is logged out (default state) -->
+      <div id="logged-out-nav">
+        <a href="login.html">Log in</a>
+        <a href="signup.html" class="signup-btn">Sign up</a>
+      </div>
+      
+      <!-- User is logged in (hidden by default) -->
+      <div id="logged-in-nav" class="hidden">
+        <div class="user-account" id="user-account">
+          <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar" id="user-avatar">
+          <div class="user-dropdown" id="user-dropdown">
+            <div class="user-dropdown-header">
+              <img src="/placeholder.svg?height=64&width=64" alt="User" class="user-avatar" id="dropdown-avatar">
+              <div class="user-dropdown-name" id="dropdown-name">User Name</div>
+              <div class="user-dropdown-email" id="dropdown-email">user@example.com</div>
+            </div>
+            <ul class="user-dropdown-menu">
+              <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+              <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+              <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+              <li><a href="#" id="logout-link" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="dashboard-container">
+  <div class="dashboard-sidebar">
+    <div class="user-info">
+      <img src="/placeholder.svg?height=100&width=100" alt="User" class="dashboard-avatar" id="dashboard-avatar">
+      <div class="user-name" id="dashboard-name">User Name</div>
+    </div>
+    <nav class="dashboard-nav">
+      <ul>
+        <li><a href="dashboard.html"><i class="fas fa-home"></i> Overview</a></li>
+        <li><a href="settings.html" class="active"><i class="fas fa-cog"></i> Account Settings</a></li>
+        <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+        <li class="artist-only hidden" id="artist-settings"><a href="#artist-settings"><i class="fas fa-music"></i> Artist Settings</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="dashboard-content">
+    <div class="dashboard-section" id="account-settings">
+      <h1>Account Settings</h1>
+      
+      <div class="settings-container">
+        <div class="settings-card">
+          <h2>Profile Information</h2>
+          <form id="profile-form" enctype="multipart/form-data">
+            <div id="profile-error" class="error-message hidden"></div>
+            <div id="profile-success" class="success-message hidden"></div>
+            
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" disabled>
+              <p class="input-hint">Username cannot be changed</p>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email">
+            </div>
+            
+            <div class="form-group fan-only hidden" id="display-name-group">
+              <label for="display-name">Display Name</label>
+              <input type="text" id="display-name" name="display_name">
+            </div>
+            
+            <div class="form-group artist-only hidden" id="artist-name-group">
+              <label for="artist-name">Artist Name</label>
+              <input type="text" id="artist-name" name="artist_name">
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-picture">Profile Picture</label>
+              <div class="profile-picture-container">
+                <img src="/placeholder.svg?height=100&width=100" alt="Profile" id="current-profile-picture">
+                <input type="file" id="profile-picture" name="profile_picture" accept="image/*">
+              </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Save Changes</button>
+          </form>
+        </div>
+        
+        <div class="settings-card">
+          <h2>Change Password</h2>
+          <form id="password-form">
+            <div id="password-error" class="error-message hidden"></div>
+            <div id="password-success" class="success-message hidden"></div>
+            
+            <div class="form-group">
+              <label for="current-password">Current Password</label>
+              <input type="password" id="current-password" name="current_password" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="new-password">New Password</label>
+              <input type="password" id="new-password" name="new_password" required>
+              <p class="input-hint">Password must be at least 8 characters long</p>
+            </div>
+            
+            <div class="form-group">
+              <label for="confirm-password">Confirm New Password</label>
+              <input type="password" id="confirm-password" name="confirm_password" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Change Password</button>
+          </form>
+        </div>
+        
+        <div class="settings-card artist-only hidden" id="artist-settings-card">
+          <h2>Artist Profile</h2>
+          <form id="artist-form" enctype="multipart/form-data">
+            <div id="artist-error" class="error-message hidden"></div>
+            <div id="artist-success" class="success-message hidden"></div>
+            
+            <div class="form-group">
+              <label for="bio">Bio</label>
+              <textarea id="bio" name="bio" rows="4"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" id="location" name="location">
+            </div>
+            
+            <div class="form-group">
+              <label for="website">Website</label>
+              <input type="url" id="website" name="website">
+            </div>
+            
+            <div class="form-group">
+              <label for="banner-image">Banner Image</label>
+              <div class="banner-image-container">
+                <img src="/placeholder.svg?height=150&width=500" alt="Banner" id="current-banner-image" class="banner-preview">
+                <input type="file" id="banner-image" name="banner_image" accept="image/*">
+              </div>
+              <p class="input-hint">Recommended size: 1200x350 pixels</p>
+            </div>
+            
+            <button type="submit" class="submit-btn">Save Artist Profile</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>InSync</h3>
+      <p>Discover and support independent artists.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Connect</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 InSync. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/auth.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>
+

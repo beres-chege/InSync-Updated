@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InSync - Discover and Support Independent Artists</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <div class="logo">
+        <a href="index.html">InSync</a>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for artists, albums, or tracks">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <div class="nav-links">
+        <a href="discover.html">Discover</a>
+        
+        <!-- User is logged out (default state) -->
+        <div id="logged-out-nav">
+          <a href="login.html">Log in</a>
+          <a href="signup.html" class="signup-btn">Sign up</a>
+        </div>
+        
+        <!-- User is logged in (hidden by default) -->
+        <div id="logged-in-nav" class="hidden">
+          <div class="user-account" id="user-account">
+            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar" id="user-avatar">
+            <div class="user-dropdown" id="user-dropdown">
+              <div class="user-dropdown-header">
+                <img src="/placeholder.svg?height=64&width=64" alt="User" class="user-avatar" id="dropdown-avatar">
+                <div class="user-dropdown-name" id="dropdown-name">User Name</div>
+                <div class="user-dropdown-email" id="dropdown-email">user@example.com</div>
+              </div>
+              <ul class="user-dropdown-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#" id="logout-link" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Your music, your way</h1>
+      <p>Stream and support independent artists directly</p>
+      <a href="signup.html" class="cta-button">Join InSync</a>
+    </div>
+  </section>
+
+  <section class="featured-section">
+    <h2>Featured Albums</h2>
+    <div class="album-grid" id="featured-albums">
+      <!-- Albums will be loaded dynamically -->
+    </div>
+  </section>
+
+  <section class="new-releases">
+    <h2>New Releases</h2>
+    <div class="album-grid" id="new-releases">
+      <!-- New releases will be loaded dynamically -->
+    </div>
+  </section>
+
+  <section class="genres">
+    <h2>Browse by Genre</h2>
+    <div class="genre-tags">
+      <a href="#" class="genre-tag">Electronic</a>
+      <a href="#" class="genre-tag">Rock</a>
+      <a href="#" class="genre-tag">Hip-Hop</a>
+      <a href="#" class="genre-tag">Jazz</a>
+      <a href="#" class="genre-tag">Ambient</a>
+      <a href="#" class="genre-tag">Folk</a>
+      <a href="#" class="genre-tag">Experimental</a>
+      <a href="#" class="genre-tag">Classical</a>
+    </div>
+  </section>
+
+  <div class="player-bar" id="player-bar">
+    <div class="now-playing">
+      <img src="/placeholder.svg?height=50&width=50" alt="Album cover" id="current-album-art">
+      <div class="track-info">
+        <span id="current-track">Select a track</span>
+        <span id="current-artist">Artist name</span>
+      </div>
+    </div>
+    <div class="player-controls">
+      <button id="prev-track"><i class="fas fa-step-backward"></i></button>
+      <button id="play-pause"><i class="fas fa-play"></i></button>
+      <button id="next-track"><i class="fas fa-step-forward"></i></button>
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+    </div>
+    <div class="volume-control">
+      <i class="fas fa-volume-up"></i>
+      <input type="range" id="volume" min="0" max="100" value="80">
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>InSync</h3>
+        <p>Discover and support independent artists.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 InSync. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script src="player.js"></script>
+
+  <div class="mini-player-toggle" id="mini-player-toggle">
+    <i class="fas fa-music"></i>
+  </div>
+</body>
+</html>
+

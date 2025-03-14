@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Profile - InSync</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <div class="logo">
+        <a href="index.html">InSync</a>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for artists, albums, or tracks">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <div class="nav-links">
+        <a href="discover.html">Discover</a>
+        
+        <!-- User is logged out (default state) -->
+        <div id="logged-out-nav">
+          <a href="login.html">Log in</a>
+          <a href="signup.html" class="signup-btn">Sign up</a>
+        </div>
+        
+        <!-- User is logged in (hidden by default) -->
+        <div id="logged-in-nav" class="hidden">
+          <div class="user-account" id="user-account">
+            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar" id="user-avatar">
+            <div class="user-dropdown" id="user-dropdown">
+              <div class="user-dropdown-header">
+                <img src="/placeholder.svg?height=64&width=64" alt="User" class="user-avatar" id="dropdown-avatar">
+                <div class="user-dropdown-name" id="dropdown-name">User Name</div>
+                <div class="user-dropdown-email" id="dropdown-email">user@example.com</div>
+              </div>
+              <ul class="user-dropdown-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#" id="logout-link" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="artist-header" id="artist-header">
+    <div class="artist-header-overlay"></div>
+    <div class="artist-header-content">
+      <img src="/placeholder.svg" alt="" class="artist-avatar" id="artist-avatar">
+      <div class="artist-header-info">
+        <h1 id="artist-name"></h1>
+        <p id="artist-location"></p>
+        <div class="artist-stats">
+          <div class="artist-stat">
+            <i class="fas fa-users"></i>
+            <span id="artist-followers"></span>
+          </div>
+          <div class="artist-stat">
+            <i class="fas fa-compact-disc"></i>
+            <span id="artist-releases"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="artist-profile-nav">
+    <ul>
+      <li><a href="#music" class="active">Music</a></li>
+      <li><a href="#merch">Merch</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+  </nav>
+
+  <main class="artist-page">
+    <div class="artist-content">
+      <section class="artist-music">
+        <div class="music-header">
+          <h2>Music</h2>
+          <div class="sort-options">
+            <select id="sort-music">
+              <option value="newest">Newest</option>
+              <option value="popular">Popular</option>
+              <option value="a-z">A-Z</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="albums-container" id="artist-albums">
+          <!-- Albums will be loaded dynamically -->
+        </div>
+      </section>
+
+      <section class="artist-info">
+        <div class="bio-section">
+          <h3>About</h3>
+          <div id="artist-bio"></div>
+        </div>
+        
+        <div class="discography">
+          <h3>Discography</h3>
+          <div id="discography-list">
+            <!-- Discography will be loaded dynamically -->
+          </div>
+        </div>
+        
+        <div class="artist-links">
+          <h3>Links</h3>
+          <div class="social-links" id="artist-social-links">
+            <!-- Social links will be loaded dynamically -->
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Player Bar -->
+  <div class="player-bar" id="player-bar">
+    <!-- Player content remains the same -->
+  </div>
+
+  <div class="mini-player-toggle" id="mini-player-toggle">
+  <i class="fas fa-music"></i>
+</div>
+
+  <script src="artist-data.js"></script>
+  <script src="artist.js"></script>
+  <script src="player.js"></script>
+</body>
+</html>
+

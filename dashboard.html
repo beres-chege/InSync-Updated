@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - InSync</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header>
+  <nav class="main-nav">
+    <div class="logo">
+      <a href="index.html">InSync</a>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for artists, albums, or tracks">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+    <div class="nav-links">
+      <a href="discover.html">Discover</a>
+      
+      <!-- User is logged out (default state) -->
+      <div id="logged-out-nav">
+        <a href="login.html">Log in</a>
+        <a href="signup.html" class="signup-btn">Sign up</a>
+      </div>
+      
+      <!-- User is logged in (hidden by default) -->
+      <div id="logged-in-nav" class="hidden">
+        <div class="user-account" id="user-account">
+          <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar" id="user-avatar">
+          <div class="user-dropdown" id="user-dropdown">
+            <div class="user-dropdown-header">
+              <img src="/placeholder.svg?height=64&width=64" alt="User" class="user-avatar" id="dropdown-avatar">
+              <div class="user-dropdown-name" id="dropdown-name">User Name</div>
+              <div class="user-dropdown-email" id="dropdown-email">user@example.com</div>
+            </div>
+            <ul class="user-dropdown-menu">
+              <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+              <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+              <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+              <li><a href="#" id="logout-link" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="dashboard-container">
+  <div class="dashboard-sidebar">
+    <div class="user-info">
+      <img src="/placeholder.svg?height=100&width=100" alt="User" class="dashboard-avatar" id="dashboard-avatar">
+      <div class="user-name" id="dashboard-name">User Name</div>
+    </div>
+    <nav class="dashboard-nav">
+      <ul>
+        <li><a href="#overview" class="active"><i class="fas fa-home"></i> Overview</a></li>
+        <li><a href="#library"><i class="fas fa-music"></i> My Library</a></li>
+        <li><a href="#playlists"><i class="fas fa-list"></i> Playlists</a></li>
+        <li><a href="#following"><i class="fas fa-users"></i> Following</a></li>
+        <li class="artist-only hidden" id="artist-menu-item"><a href="#my-music"><i class="fas fa-compact-disc"></i> My Music</a></li>
+        <li class="artist-only hidden" id="upload-menu-item"><a href="#upload"><i class="fas fa-upload"></i> Upload</a></li>
+        <li class="artist-only hidden" id="stats-menu-item"><a href="#stats"><i class="fas fa-chart-line"></i> Stats</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="dashboard-content">
+    <div class="dashboard-section" id="overview">
+      <h1>Dashboard</h1>
+      <p>Welcome to your InSync dashboard!</p>
+      
+      <div class="dashboard-cards">
+        <div class="dashboard-card">
+          <div class="card-icon"><i class="fas fa-music"></i></div>
+          <div class="card-content">
+            <h3>My Library</h3>
+            <p>Access your saved music</p>
+          </div>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="card-icon"><i class="fas fa-list"></i></div>
+          <div class="card-content">
+            <h3>Playlists</h3>
+            <p>Create and manage playlists</p>
+          </div>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="card-icon"><i class="fas fa-users"></i></div>
+          <div class="card-content">
+            <h3>Following</h3>
+            <p>Artists you follow</p>
+          </div>
+        </div>
+        
+        <div class="dashboard-card artist-only hidden" id="upload-card">
+          <div class="card-icon"><i class="fas fa-upload"></i></div>
+          <div class="card-content">
+            <h3>Upload Music</h3>
+            <p>Share your music with the world</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="recent-activity">
+        <h2>Recent Activity</h2>
+        <div class="activity-list" id="activity-list">
+          <p>No recent activity</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>InSync</h3>
+      <p>Discover and support independent artists.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Connect</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 InSync. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
+  // Check if user is logged in
+  const authStatus = await checkAuth();
+  
+  if (!authStatus) {
+    // Redirect to login page if not logged in
+    window.location.href = 'login.html';
+    return;
+  }
+  
+  // Get current user
+  const { user, profile } = getCurrentUser();
+  
+  // Update dashboard UI
+  const dashboardAvatar = document.getElementById('dashboard-avatar');
+  const dashboardName = document.getElementById('dashboard-name');
+  
+  if (dashboardAvatar && profile) {
+    // Set avatar image
+    const avatarSrc = profile.profile_image 
+      ? `uploads/profile_images/${profile.profile_image}` 
+      : '/placeholder.svg?height=100&width=100';
+    dashboardAvatar.src = avatarSrc;
+  }
+  
+  if (dashboardName) {
+    // Set name based on user type
+    if (user.user_type === 'artist' && profile) {
+      dashboardName.textContent = profile.artist_name || user.username;
+    } else if (profile) {
+      dashboardName.textContent = profile.display_name || user.username;
+    } else {
+      dashboardName.textContent = user.username;
+    }
+  }
+  
+  // Show artist-specific menu items if user is an artist
+  if (user.user_type === 'artist') {
+    const artistElements = document.querySelectorAll('.artist-only');
+    artistElements.forEach(el => el.classList.remove('hidden'));
+  }
+});
+</script>
+</body>
+</html>
+

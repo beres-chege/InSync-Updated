@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - MusicWave</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <div class="logo">
+        <a href="index.html">MusicWave</a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#" id="login-btn">Log in</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="signup-container">
+    <div class="signup-content">
+      <h1>Join MusicWave</h1>
+      <p class="signup-intro">Create an account to discover, stream, and support independent artists.</p>
+      
+      <div class="account-type-selector">
+        <h2>Choose your account type</h2>
+        <div class="account-types">
+          <div class="account-type" id="fan-account">
+            <i class="fas fa-headphones"></i>
+            <h3>Fan</h3>
+            <p>Discover and support your favorite artists</p>
+          </div>
+          <div class="account-type" id="artist-account">
+            <i class="fas fa-music"></i>
+            <h3>Artist</h3>
+            <p>Share your music with the world</p>
+          </div>
+        </div>
+      </div>
+      
+      <form id="signup-form" class="hidden" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required>
+          <p class="password-hint">Password must be at least 8 characters long</p>
+        </div>
+        <div class="form-group">
+          <label for="profile-picture">Profile Picture</label>
+          <input type="file" id="profile-picture" name="profile_picture" accept="image/*">
+          <p class="input-hint">Upload a profile picture (optional)</p>
+        </div>
+        
+        <!-- Artist-specific fields (hidden by default) -->
+        <div id="artist-fields" class="hidden">
+          <div class="form-group">
+            <label for="artist-name">Artist/Band Name</label>
+            <input type="text" id="artist-name">
+          </div>
+          <div class="form-group">
+            <label for="genre">Primary Genre</label>
+            <select id="genre">
+              <option value="">Select a genre</option>
+              <option value="electronic">Electronic</option>
+              <option value="rock">Rock</option>
+              <option value="hip-hop">Hip-Hop</option>
+              <option value="jazz">Jazz</option>
+              <option value="ambient">Ambient</option>
+              <option value="folk">Folk</option>
+              <option value="experimental">Experimental</option>
+              <option value="classical">Classical</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a></label>
+        </div>
+        
+        <button type="submit" class="submit-btn">Create Account</button>
+      </form>
+      
+      <p class="login-link">Already have an account? <a href="#" id="login-link">Log in</a></p>
+    </div>
+  </main>
+
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Log In</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" required>
+        </div>
+        <button type="submit" class="submit-btn">Log In</button>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>MusicWave</h3>
+        <p>Discover and support independent artists.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MusicWave. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
+

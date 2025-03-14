@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - InSync</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header>
+  <nav class="main-nav">
+    <div class="logo">
+      <a href="index.html">InSync</a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="discover.html">Discover</a>
+    </div>
+  </nav>
+</header>
+
+<main class="login-container">
+  <div class="login-content">
+    <h1>Welcome Back</h1>
+    <p class="login-intro">Sign in to continue your music journey.</p>
+    
+    <form id="login-form">
+      <div id="login-error" class="error-message hidden"></div>
+      
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input type="text" id="username" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      
+      <div class="form-group remember-me">
+        <input type="checkbox" id="remember-me">
+        <label for="remember-me">Remember me</label>
+        <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+      </div>
+      
+      <button type="submit" class="submit-btn">Log In</button>
+    </form>
+    
+    <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>InSync</h3>
+      <p>Discover and support independent artists.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Connect</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 InSync. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const loginForm = document.getElementById('login-form');
+  const loginError = document.getElementById('login-error');
+  
+  loginForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const rememberMe = document.getElementById('remember-me').checked;
+    
+    try {
+      loginError.classList.add('hidden');
+      
+      // Call login function from auth.js
+      const result = await login({
+        username: username,
+        password: password,
+        remember_me: rememberMe
+      });
+      
+      // Redirect to home page on success
+      window.location.href = 'index.html';
+    } catch (error) {
+      loginError.textContent = error.message || 'Login failed. Please check your credentials.';
+      loginError.classList.remove('hidden');
+    }
+  });
+});
+</script>
+</body>
+</html>
+
